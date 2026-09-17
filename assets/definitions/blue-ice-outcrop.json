@@ -1,0 +1,35 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "blue-ice-outcrop",
+  "type": "prop",
+  "renderer": "blueIce",
+  "frameSize": [
+    84,
+    64
+  ],
+  "description": "Original overhead arctic pixel art: elongated spotted pike, mottled lake trout, or fractured exposed cyan ice shelf.",
+  "references": [
+    "assets/references/ice-reference.png"
+  ]
+}

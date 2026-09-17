@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "gear-anchor",
+  "type": "ui",
+  "renderer": "modulesArt",
+  "frameSize": [
+    24,
+    24
+  ],
+  "description": "Blue steel folding anchor with crossbar and two curved flukes.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

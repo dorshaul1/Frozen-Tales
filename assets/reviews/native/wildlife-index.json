@@ -1,0 +1,20 @@
+{
+  "rows": [
+    "penguin",
+    "polar-bear",
+    "fox",
+    "hare",
+    "seal",
+    "otter",
+    "reindeer",
+    "owl",
+    "bird",
+    "village-corgi"
+  ],
+  "columns": [
+    "N",
+    "S",
+    "E",
+    "W"
+  ]
+}

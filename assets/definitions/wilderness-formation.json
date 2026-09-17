@@ -1,0 +1,45 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "wilderness-formation",
+  "type": "prop",
+  "renderer": "ecologyLandmark",
+  "frameSize": [
+    112,
+    96
+  ],
+  "description": "Three original overhead arctic landmarks: frozen cascade, blue ice arch, drift cave. Asymmetric rock shelves with layered snow and ice.",
+  "references": [
+    "assets/references/ice-reference.png"
+  ]
+}

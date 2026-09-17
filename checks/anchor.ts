@@ -1,0 +1,13 @@
+import Phaser from 'phaser';
+import {RiverScene} from '../src/game/scenes/RiverScene';
+import {STARTER_LEVELS,moduleLoadout} from '../src/game/upgrades/data';
+const scene=new RiverScene(null,true);new Phaser.Game({type:Phaser.AUTO,width:900,height:650,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});
+while(!scene.fishing)await new Promise(r=>setTimeout(r,100));
+const out=document.querySelector('#result')!,check=(v:boolean,s:string)=>{out.textContent+=(v?'PASS ':'FAIL ')+s+'\n';if(!v)throw Error(s);};
+const k=Reflect.get(scene,'kayak') as import('../src/game/entities/Kayak').Kayak;k.moduleValue=id=>id==='anchor'?1:0;k.setEquipmentVisual({...STARTER_LEVELS,anchor:1});
+k.setVelocity(60,0);check(!k.toggleAnchor(),'Cannot deploy at speed');
+k.setVelocity(0,0);check(k.toggleAnchor()&&k.anchored,'Deploy at rest');
+k.waterFlow={x:70,y:20,speed:1};k.update(0,16);check(k.body!.velocity.length()<4,'Anchor strongly resists storm flow');
+check(k.toggleAnchor()&&!k.anchored,'Retrieve freely');
+check(moduleLoadout(['anchor','cargo','turbo','hull'],{...STARTER_LEVELS,anchor:1,cargo:1,turbo:1,hull:1}).join(',')==='anchor,cargo,turbo','Anchor shares three-slot loadout');
+k.setVelocity(0,0);k.toggleAnchor();

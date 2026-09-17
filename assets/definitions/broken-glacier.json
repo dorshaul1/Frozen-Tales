@@ -1,0 +1,37 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "broken-glacier",
+  "type": "prop",
+  "renderer": "microLandmark",
+  "frameSize": [
+    96,
+    88
+  ],
+  "description": "Three split blue glacier plates, jagged snow caps and deep seams.",
+  "references": [
+    "assets/references/pine-reference.png",
+    "assets/references/ice-reference.png",
+    "assets/references/cabin-reference.png"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "fish-trout",
+  "type": "ui",
+  "renderer": "fishPortrait",
+  "frameSize": [
+    44,
+    28
+  ],
+  "description": "Original overhead arctic pixel art: elongated spotted pike, mottled lake trout, or fractured exposed cyan ice shelf.",
+  "references": [
+    "assets/references/fish-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

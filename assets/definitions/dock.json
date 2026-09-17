@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "dock",
+  "type": "prop",
+  "renderer": "dock",
+  "frameSize": [
+    104,
+    40
+  ],
+  "description": "Overhead weathered timber dock, grain, rope coil, posts and amber lantern. Collider stays 96×24 at frame offset (3,8).",
+  "references": [
+    "assets/references/dock-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

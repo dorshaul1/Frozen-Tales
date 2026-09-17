@@ -1,0 +1,54 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "paddle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "paddle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "paddle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    },
+    "paddle": {
+      "fps": 6
+    }
+  },
+  "tags": [
+    "sprite",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "kayak",
+  "type": "sprite",
+  "renderer": "kayak",
+  "frameSize": [
+    48,
+    60
+  ],
+  "description": "Native overhead fisherman at villager scale, proportionate rust kayak and paddle; fixed 48 by 60 canvas.",
+  "references": [
+    "assets/references/kayak-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

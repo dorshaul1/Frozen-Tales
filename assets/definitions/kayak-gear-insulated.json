@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "kayak-gear-insulated",
+  "type": "ui",
+  "renderer": "modulesArt",
+  "frameSize": [
+    48,
+    60
+  ],
+  "description": "Cream insulated fish hold with blue lining and leather latch.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

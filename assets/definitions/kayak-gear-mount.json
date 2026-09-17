@@ -1,0 +1,41 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "kayak-gear-mount",
+  "type": "sprite",
+  "renderer": "modulesArt",
+  "frameSize": [
+    48,
+    60
+  ],
+  "description": "Native arctic workshop artwork: worn timber, steel bracing, warm brass and pixel snow. Clear repair berth and aligned kayak equipment.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

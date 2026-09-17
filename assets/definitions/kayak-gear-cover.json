@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 2
+    }
+  },
+  "tags": [
+    "sprite",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "kayak-gear-cover",
+  "type": "sprite",
+  "renderer": "toolsArt",
+  "frameSize": [
+    48,
+    60
+  ],
+  "description": "Original native pixel village tools artwork: layered pine-green canvas, worn timber, brass lantern and cold steel. Shared arctic palette and overhead anchors.",
+  "references": [
+    "assets/references/merchant-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

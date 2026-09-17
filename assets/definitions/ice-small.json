@@ -1,0 +1,47 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "ice-small",
+  "collision": true,
+  "type": "prop",
+  "renderer": "ice",
+  "frameSize": [
+    56,
+    40
+  ],
+  "description": "Irregular rounded/broken snow-capped floating ice floe, 48×32 collision footprint with 4px visual padding.",
+  "references": [
+    "assets/references/ice-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

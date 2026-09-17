@@ -1,0 +1,91 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 4
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 5
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 6
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 7
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 8
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 9
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 10
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 11
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "handheld-tools",
+  "type": "ui",
+  "renderer": "modulesArt",
+  "frameSize": [
+    16,
+    16
+  ],
+  "description": "Native arctic personal tools: brass binoculars, sounding reel and field notebook; warm leather toolbelt and hand-use animation frames.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

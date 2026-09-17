@@ -1,0 +1,609 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "run",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "run",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "run",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "run",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "sit",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "sit",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "sit",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "sit",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "lie",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "lie",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "lie",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "lie",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "wag",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "wag",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "wag",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "wag",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "sniff",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "sniff",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "sniff",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "sniff",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "run",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "run",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "run",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "run",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "sit",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "sit",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "sit",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "sit",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "lie",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "lie",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "lie",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "lie",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "wag",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "wag",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "wag",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "wag",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "sniff",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "sniff",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "sniff",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "sniff",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "run",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "run",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "run",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "run",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "sit",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "sit",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "sit",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "sit",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "lie",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "lie",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "lie",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "lie",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "wag",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "wag",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "wag",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "wag",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "sniff",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "sniff",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "sniff",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "sniff",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "run",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "run",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "run",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "run",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "sit",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "sit",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "sit",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "sit",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "lie",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "lie",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "lie",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "lie",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "wag",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "wag",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "wag",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "wag",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "sniff",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "sniff",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "sniff",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "sniff",
+      "index": 3
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 3
+    },
+    "walk": {
+      "fps": 6
+    },
+    "run": {
+      "fps": 10
+    },
+    "sit": {
+      "fps": 3
+    },
+    "lie": {
+      "fps": 3
+    },
+    "wag": {
+      "fps": 3
+    },
+    "sniff": {
+      "fps": 3
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "village-corgi",
+  "type": "sprite",
+  "renderer": "corgiArt",
+  "frameSize": [
+    32,
+    32
+  ],
+  "description": "Small russet and cream corgi: long body, short white paws, upright ears, cream muzzle and chest. Authored front, back and two profiles.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

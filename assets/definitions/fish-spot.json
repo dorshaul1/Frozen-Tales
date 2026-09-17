@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "sprite",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "fish-spot",
+  "type": "sprite",
+  "renderer": "fish-spot",
+  "frameSize": [
+    32,
+    24
+  ],
+  "description": "Subtle dark fish silhouette under deep water. Bubbles are a separate in-game feedback effect.",
+  "references": [
+    "assets/references/fish-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

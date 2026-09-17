@@ -1,0 +1,10 @@
+import {Cargo} from '../src/game/player/Cargo';
+import {freshness} from '../src/game/player/freshness';
+import {SaveStore} from '../src/game/player/SaveStore';
+import {STARTER_LEVELS,moduleLoadout} from '../src/game/upgrades/data';
+const out=document.querySelector('#result')!,check=(v:boolean,s:string)=>{out.textContent+=(v?'PASS ':'FAIL ')+s+'\n';if(!v)throw Error(s);};
+const c=new Cargo();c.add('salmon');c.age(600,false);check(freshness(c.entries[0]).name==='Fresh','Short trip Fresh');c.age(900,false);check(freshness(c.entries[0]).name==='Good','Longer trip Good');c.age(1600,false);check(freshness(c.entries[0]).name==='Aging'&&c.count===1,'Aging never removes cargo');
+const cold=new Cargo();cold.add('salmon');cold.age(1600,true);check(freshness(cold.entries[0]).name==='Fresh','Insulation protects long trips');
+const store=new SaveStore('arctic-freshness-check');store.write({version:2,money:0,levels:STARTER_LEVELS,cargo:[...c.entries],records:{}});check(store.load().cargo[0].freshAge===1600,'Save reload preserves age');localStorage.removeItem('arctic-freshness-check');
+check(moduleLoadout(['insulated','cargo','anchor','turbo'],{...STARTER_LEVELS,insulated:1,cargo:1,anchor:1,turbo:1}).length===3,'Still three module slots');
+check(freshness(cold.entries[0]).rate===1.05&&freshness(c.entries[0]).rate===.95,'Small bounded value modifiers');

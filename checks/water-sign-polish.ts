@@ -1,0 +1,11 @@
+import Phaser from 'phaser';import {RiverScene} from '../src/game/scenes/RiverScene';
+const scene=new RiverScene(null,true);new Phaser.Game({type:Phaser.AUTO,width:620,height:480,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});while(!scene.fishing)await new Promise(r=>setTimeout(r,100));
+const kayak=Reflect.get(scene,'kayak'),tools=Reflect.get(scene,'tools'),fishing=scene.fishing;
+kayak.body.reset(800,1200);scene.cameras.main.centerOn(800,1200);scene.equipment.levels.lantern=1;scene.equipment.gear.lanternLit=true;
+const spots=Reflect.get(fishing,'spots');spots[0].sign='birds';spots[0].x=800;spots[0].y=1120;spots[0].retired=false;spots[0].availableAt=0;
+Reflect.get(fishing,'draw').call(fishing,0);tools.update(0,16);
+const birds=Reflect.get(fishing,'activityGulls') as Phaser.GameObjects.Image[];
+if(!birds.some(b=>b.visible&&b.frame.name.startsWith('bird/')&&b.rotation===0&&b.scaleX===1))throw Error('Missing native gull flight sprites');
+const light=Reflect.get(tools,'light') as Phaser.GameObjects.Graphics;
+if(light.commandBuffer.length)throw Error('Additive lantern halo still drawn');
+document.querySelector('#result')!.textContent='PASS native directional gull flight · no rotated wing markers\nPASS open-water lantern halo removed';

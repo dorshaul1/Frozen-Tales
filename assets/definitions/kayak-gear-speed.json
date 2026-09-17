@@ -1,0 +1,105 @@
+{
+  "id": "kayak-gear-speed",
+  "frameSize": [
+    48,
+    60
+  ],
+  "type": "sprite",
+  "renderer": "kayakGear",
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 4
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 5
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 6
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 7
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 8
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 9
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 10
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 11
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 12
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 13
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 14
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "normalization": {
+    "fit": "exact"
+  },
+  "tags": [
+    "kayak",
+    "equipment",
+    "modular"
+  ],
+  "description": "Original native overhead speed attachment, three purchased levels, fixed kayak canvas and shared anchor. Speed includes synchronized idle, three paddle poses and parked pose per tier.",
+  "references": [
+    "assets/references/kayak-reference.png"
+  ]
+}

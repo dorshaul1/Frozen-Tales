@@ -1,0 +1,5 @@
+import fs from 'node:fs';import {generate} from './generate.mjs';import {build,validate} from './core.mjs';
+const base=JSON.parse(fs.readFileSync('assets/definitions/tree-mature.json'));
+for(const [id,renderer,frameSize,description]of [['fractured-ground','microLandmark',[112,88],'Flat wind-exposed lake ice with branching fissures and feathered snow islands.'],['tree-ancient','vegetation',[80,80],'Ancient broad spruce crown with mature overlapping snow-laden boughs.'],['abandoned-shelter','microLandmark',[88,80],'Collapsed overhead timber shelter with broken rafters and drifted roof.'],['broken-glacier','microLandmark',[96,88],'Three split blue glacier plates, jagged snow caps and deep seams.']]){
+ const def={...base,id,renderer,frameSize,description,frames:[{direction:'none',animation:'idle',index:0}],references:['assets/references/pine-reference.png','assets/references/ice-reference.png','assets/references/cabin-reference.png']};fs.writeFileSync(`assets/definitions/${id}.json`,JSON.stringify(def,null,2)+'\n');generate(def,undefined,false);
+}build();console.log(validate());

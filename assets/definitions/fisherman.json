@@ -1,0 +1,274 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "NE",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "SE",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "SW",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "NW",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 3
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    },
+    "walk": {
+      "fps": 7
+    }
+  },
+  "tags": [
+    "arctic",
+    "village"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "description": "Original native 32px arctic fisherman with directly authored front, side, rear and quarter views. Visible face toward S; profile nose/hood, overlapping limbs and rear backpack for E/W; deliberate cheek/hood quarter poses for diagonals. No rotation or mirroring of source sprites. Two idle and four walking frames per direction, shared scale and anchor.",
+  "references": [
+    "assets/references/fisherman-reference.png",
+    "assets/references/merchant-reference.png",
+    "assets/references/cabin-reference.png"
+  ],
+  "id": "fisherman",
+  "type": "sprite",
+  "renderer": "villagePerson",
+  "frameSize": [
+    32,
+    32
+  ]
+}

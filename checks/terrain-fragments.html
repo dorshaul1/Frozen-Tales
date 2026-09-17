@@ -1,0 +1,8 @@
+<meta charset="UTF-8"><pre id="result"></pre><script type="module">
+import {clearTerrainFragments} from '/src/game/world/terrainFragments.ts';
+import {waterSpans,WORLD_HEIGHT,removedTerrainFragments} from '/src/game/world/river.ts';
+const out=document.querySelector('#result');const check=(v,s)=>{out.textContent+=(v?'PASS ':'FAIL ')+s+'\n';if(!v)throw Error(s)};
+const make=()=>new Map(Array.from({length:100},(_,i)=>[i*2,i>=30&&i<45?[[20,80],[100,180]]:[[20,180]]]));
+let rows=make();check(clearTerrainFragments(rows,200,()=>false)===1,'Remove enclosed sliver');check(rows.get(70).length===1,'Removed fragment is navigable water');rows=make();check(clearTerrainFragments(rows,200,()=>true)===0,'Preserve authored islands');rows=make();for(let y=0;y<60;y+=2)rows.set(y,[[20,80],[100,180]]);check(clearTerrainFragments(rows,200,()=>false)===0,'Preserve attached mainland');
+waterSpans(0);out.textContent+='Actual world fragments removed: '+removedTerrainFragments+'\n';check(waterSpans(0)===waterSpans(0),'Stable cached contours');
+</script>

@@ -1,0 +1,48 @@
+import Phaser from 'phaser';import {RiverScene} from '../src/game/scenes/RiverScene';import {SaveStore} from '../src/game/player/SaveStore';import {TOOL_IDS,toolbelt,STARTER_LEVELS} from '../src/game/upgrades/data';
+const keyName='arctic-drift.check-five-slots',store=new SaveStore(keyName);localStorage.removeItem(keyName);store.write({...store.load(),money:3000});
+const scene=new RiverScene(keyName,true),game=new Phaser.Game({type:Phaser.AUTO,width:700,height:600,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});
+const out=document.querySelector('#result')!,check=(ok:boolean,s:string)=>{out.textContent+='\n'+(ok?'PASS ':'FAIL ')+s;if(!ok)throw Error(s);};
+const wait=(ms:number)=>new Promise(r=>setTimeout(r,ms)),tap=async(code:number)=>{window.dispatchEvent(new KeyboardEvent('keydown',{keyCode:code,which:code,bubbles:true}));await wait(90);window.dispatchEvent(new KeyboardEvent('keyup',{keyCode:code,which:code,bubbles:true}));await wait(130);};
+while(!scene.fishing)await wait(100);game.events.off(Phaser.Core.Events.BLUR);
+const tools=Reflect.get(scene,'tools'),kayak=Reflect.get(scene,'kayak'),e=scene.equipment,body=kayak.body as Phaser.Physics.Arcade.Body;
+check(e.belt.length===5&&e.belt[0]==='rod','Fresh toolbelt has five slots with starter rod in slot 1');
+for(const id of TOOL_IDS)e.purchase(id);
+check(e.belt.join(',')==='rod,lantern,finder,binoculars,probe','Purchases populate free slots without displacing existing bindings');
+await tap(49);check(e.gear.selectedTool==='rod','1 selects rod');await tap(50);check(e.gear.selectedTool==='lantern','2 selects lantern');await tap(70);check(e.gear.lanternLit===true,'F uses numbered selection');
+await tap(66);check(tools.isEditing,'B opens arrangement');const x=kayak.x;await tap(68);check(kayak.x===x,'Arrangement pauses player movement');
+await tap(51);check(Reflect.get(tools,'editSlot')===2,'Number keys choose destination while arranging');
+// First editor candidate is the always-owned rod; E swaps it with destination.
+await tap(69);check(e.belt[2]==='rod'&&e.belt[0]==='finder','E swaps an already assigned item without duplicates');
+await tap(27);check(!tools.isEditing,'Escape closes arrangement');await tap(51);check(e.gear.selectedTool==='rod','Reordered numeric binding takes effect immediately');
+// Simulate Phaser drag events on the actual slot icon, with target world coordinates.
+const belt=Reflect.get(tools,'belt') as Phaser.GameObjects.Container;
+const lantern=belt.list.find(o=>o instanceof Phaser.GameObjects.Image&&o.frame.name.startsWith('gear-lantern/')) as Phaser.GameObjects.Image;
+lantern.emit('dragstart');lantern.emit('dragend',{worldX:scene.cameras.main.scrollX+belt.x-117+4*40+19,worldY:scene.cameras.main.scrollY+belt.y});await wait(100);
+check(e.belt[4]==='lantern'&&e.belt[1]==='probe','Dragging swaps physical toolbar slots');
+check(e.setBeltSlot(1,'guide')&&e.belt[1]==='guide'&&e.ownedTools.includes('probe'),'Owned overflow tools can replace a slot without losing ownership');
+await tap(73);check(tools.isEditing&&!scene.harborPanel.isOpen,'I opens tools inventory, never cargo');await tap(73);check(!tools.isEditing,'I closes tools inventory');
+await tap(66);await tap(73);check(!tools.isEditing,'I closes arrangement as the same owned-tools interface');
+window.dispatchEvent(new KeyboardEvent('keydown',{code:'Digit2',key:'2',shiftKey:false,bubbles:true}));await wait(100);
+check(e.gear.selectedTool==='guide','Physical Digit2 selects slot without Shift');
+window.dispatchEvent(new KeyboardEvent('keyup',{code:'Digit2',key:'2',bubbles:true}));
+window.dispatchEvent(new KeyboardEvent('keydown',{code:'Digit3',key:'?',keyCode:0,shiftKey:false,bubbles:true}));await wait(100);
+check(e.gear.selectedTool==='rod','Physical number works independently of keyboard layout');
+window.dispatchEvent(new KeyboardEvent('keyup',{code:'Digit3',key:'?',bubbles:true}));
+// Embedded browser fallback: plain keyup arrives even if the host consumed keydown.
+window.dispatchEvent(new KeyboardEvent('keyup',{code:'Digit2',key:'2',shiftKey:false,bubbles:true}));await wait(100);
+check(e.gear.selectedTool==='guide','Unmodified number selects when host consumes keydown');
+window.dispatchEvent(new KeyboardEvent('keydown',{code:'Digit3',key:'3',ctrlKey:true,bubbles:true}));await wait(100);
+check(e.gear.selectedTool==='guide','Browser modifier shortcuts do not select tools');
+window.dispatchEvent(new KeyboardEvent('keyup',{code:'Digit3',key:'3',ctrlKey:true,bubbles:true}));
+await tap(69);check(Reflect.get(scene,'home').walking,'Normal E still lands at the dock');
+await tap(73);
+const beforeFocus=e.belt.join(',');
+const editor=Reflect.get(tools,'editor') as Phaser.GameObjects.Container;
+editor.list.find(o=>o.name==='tool-choice-lantern')!.emit('pointerdown');await wait(60);
+check(e.belt.join(',')===beforeFocus,'Focusing an inventory item does not equip it prematurely');
+await tap(50);check(e.belt[1]==='lantern'&&e.gear.selectedTool==='lantern','Focused lantern equips directly into slot 2');
+await tap(73);check(!tools.isEditing,'I closes after quick equip');
+e.save();const reloaded=new RiverScene(keyName,true);check(reloaded.equipment.belt.join(',')===e.belt.join(',')&&reloaded.equipment.gear.selectedTool===e.gear.selectedTool,'Save/load preserves order and selection');
+check(toolbelt(['rod','rod','turbo','finder','lantern'],{...STARTER_LEVELS,lantern:1}).join(',')==='rod,,,,lantern','Save validation rejects duplicate, unowned and kayak-module bindings');
+const preview=document.createElement('button');preview.textContent='Arrange toolbelt';preview.onclick=()=>Reflect.get(tools,'toggleEditor').call(tools);document.body.prepend(preview);
+out.textContent+='\nALL TOOLBELT CHECKS PASSED';

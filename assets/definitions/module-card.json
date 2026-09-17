@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "module-card",
+  "type": "ui",
+  "renderer": "modulesArt",
+  "frameSize": [
+    210,
+    112
+  ],
+  "description": "Native arctic workshop artwork: worn timber, steel bracing, warm brass and pixel snow. Clear repair berth and aligned kayak equipment.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

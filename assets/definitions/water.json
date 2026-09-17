@@ -1,0 +1,36 @@
+{
+  "transparent": false,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "tile",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "water",
+  "type": "tile",
+  "renderer": "water",
+  "frameSize": [
+    128,
+    128
+  ],
+  "description": "Quiet seamless deep-blue water with sparse broken wavelets and broad low-contrast clusters.",
+  "references": [
+    "assets/references/water-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

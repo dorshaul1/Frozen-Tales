@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "fish-cisco",
+  "type": "ui",
+  "renderer": "explorationArt",
+  "frameSize": [
+    44,
+    28
+  ],
+  "description": "Original native-pixel arctic cave materials and anatomy-led cave fish: dark layered blue ice, submerged reflections, mineral facets and quiet deep pools.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

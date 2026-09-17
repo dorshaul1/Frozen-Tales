@@ -1,0 +1,22 @@
+import Phaser from 'phaser';
+import { RiverScene } from '../src/game/scenes/RiverScene';
+import { Home } from '../src/game/home/Home';
+import { Kayak } from '../src/game/entities/Kayak';
+import { SLEEP } from '../src/game/home/Sleep';
+import { SaveStore } from '../src/game/player/SaveStore';
+import { VILLAGE } from '../src/game/home/villageLayout';
+const scene=new RiverScene(null,true),game=new Phaser.Game({type:Phaser.AUTO,parent:'test',width:1000,height:650,pixelArt:true,physics:{default:'arcade'},scene:[scene]});
+const wait=(ms:number)=>new Promise(r=>setTimeout(r,ms));
+while(!Reflect.get(scene,'home'))await wait(100);
+const store=new SaveStore('arctic-drift.check-sleep');
+const restored=store.loadEnvironment();
+document.querySelector('#controls')!.append(`Reloaded save: ${restored.elapsed===30?'morning restored':'not morning'} · ${store.load().cargo.length} fish · rod ${store.load().levels.rod}`);
+const home=Reflect.get(scene,'home') as Home,kayak=scene.children.list.find(c=>c instanceof Kayak) as Kayak;
+(kayak.body as Phaser.Physics.Arcade.Body).reset(VILLAGE.dock.x,VILLAGE.dock.y);home.interactDock();home.fisherman.setPosition(SLEEP.outside.x,SLEEP.outside.y);
+const night=()=>Object.assign(scene.environment,{state:{elapsed:550,weather:'clear',remaining:180,seed:99}});
+night();
+function button(label:string,action:()=>void){const b=document.createElement('button');b.textContent=label;b.onclick=action;document.querySelector('#controls')!.append(b);}
+button('Sleep',()=>{scene.scene.resume();night();scene.sleep.begin();});
+button('Night frame',()=>{scene.scene.resume();night();scene.sleep.begin();setTimeout(()=>scene.scene.pause(),1450);});
+button('Continue',()=>scene.scene.resume());
+button('Narrow',()=>game.scale.resize(440,650));

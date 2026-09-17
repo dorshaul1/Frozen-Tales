@@ -1,0 +1,47 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "tree-fir",
+  "type": "prop",
+  "renderer": "vegetation",
+  "frameSize": [
+    48,
+    48
+  ],
+  "description": "Overhead fir with distinct branching, layered needles, exposed timber and snow pillows.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/ice-reference.png",
+    "assets/references/pine-reference.png"
+  ]
+}

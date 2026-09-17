@@ -1,0 +1,45 @@
+{
+  "id": "kayak-gear-reel",
+  "frameSize": [
+    48,
+    60
+  ],
+  "type": "sprite",
+  "renderer": "kayakGear",
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "normalization": {
+    "fit": "exact"
+  },
+  "tags": [
+    "kayak",
+    "equipment",
+    "modular"
+  ],
+  "description": "Original native overhead reel attachment, three purchased levels, fixed kayak canvas and shared anchor. Speed includes synchronized idle, three paddle poses and parked pose per tier.",
+  "references": [
+    "assets/references/kayak-reference.png"
+  ]
+}

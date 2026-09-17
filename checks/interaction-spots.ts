@@ -1,0 +1,21 @@
+import Phaser from 'phaser';
+import {RiverScene} from '../src/game/scenes/RiverScene';
+import {FIXED_INTERACTIONS,interactionAt,interactionAffinity,interactionReading} from '../src/game/world/interactionSpots';
+import {navigationFlow} from '../src/game/world/navigation';
+import {waterDepth} from '../src/game/world/depth';
+import {FISH} from '../src/game/fishing/data';
+import {validWater} from '../src/game/world/DynamicWorld';
+const out=document.querySelector('#result')!,check=(v:boolean,s:string)=>{out.textContent+=(v?'PASS ':'FAIL ')+s+'\n';if(!v)throw Error(s);};
+const scene=new RiverScene(null);new Phaser.Game({type:Phaser.AUTO,width:900,height:650,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});while(!scene.fishing)await new Promise(r=>setTimeout(r,100));
+for(const route of FIXED_INTERACTIONS){check(route.points[route.points.length-1][1]-route.points[0][1]-60>60,route.name+' ripple range cannot collapse into a stripe');const p=route.pocket,spot=interactionAt(p.x,p.y)!;check(validWater(p,17,false),route.name+' has valid navigable water');check(!!interactionReading(p.x,p.y),route.name+' has shared tool/chart reading');
+ if(spot.type==='deep')check(waterDepth(p.x,p.y)==='deep'&&interactionAffinity(p.x,p.y,FISH.trout)>1,'Deep pool favors heavier fish through habitat and weights');
+ if(spot.type==='eddy')check(Math.hypot(...Object.values(navigationFlow(p.x,p.y)).slice(0,2))<5&&interactionAffinity(p.x,p.y,FISH.whitefish)>interactionAffinity(p.x,p.y,FISH.pike),'Eddy provides shelter and calmer visitors');
+ if(spot.type==='current')check(navigationFlow(p.x,p.y).y>=26&&interactionAffinity(p.x,p.y,FISH.pike)>1,'Current pocket adds forgiving pressure and aggressive visitors');
+ const button=document.createElement('button');button.textContent=spot.name;button.onclick=()=>{const k=Reflect.get(scene,'kayak');k.body.reset(p.x,p.y);scene.cameras.main.stopFollow();scene.cameras.main.centerOn(p.x,p.y);};document.body.prepend(button);
+}
+out.textContent+='ALL INTERACTION CHECKS PASSED';
+const route=FIXED_INTERACTIONS[0],y=1480;
+const {routeSpan}=await import('../src/game/world/sideRoutes');const span=routeSpan(route,y)!,x=(span[0]+span[1])/2;
+const kayak=Reflect.get(scene,'kayak');kayak.body.reset(x,y);scene.cameras.main.centerOn(x,y);
+await new Promise(r=>setTimeout(r,2000));
+check(Math.hypot(kayak.x-x,kayak.y-y)>3,'Visible cove stream physically drifts an idle kayak');

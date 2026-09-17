@@ -1,0 +1,3 @@
+import fs from 'node:fs';import {PNG} from 'pngjs';
+const ids=['penguin','polar-bear','fox','hare','reindeer','otter','seal','owl','bird'],dirs=['n','ne','e','se','s','sw','w','nw'];const out=new PNG({width:512,height:576});for(let i=0;i<out.data.length;i+=4)out.data.set([221,231,229,255],i);
+ids.forEach((id,row)=>dirs.forEach((d,col)=>{const p=PNG.sync.read(fs.readFileSync(`assets/source/${id}/${d}-walk-1.png`));for(let y=0;y<p.height;y++)for(let x=0;x<p.width;x++){const a=(y*p.width+x)*4;if(p.data[a+3])out.data.set(p.data.subarray(a,a+4),((row*64+y)*512+col*64+x)*4);}}));fs.writeFileSync('/tmp/wildlife-directions.png',PNG.sync.write(out));

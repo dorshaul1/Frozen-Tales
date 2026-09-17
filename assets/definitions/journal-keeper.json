@@ -1,0 +1,120 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 3
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 2
+    },
+    "walk": {
+      "fps": 6
+    },
+    "warm": {
+      "fps": 2
+    },
+    "work": {
+      "fps": 3
+    }
+  },
+  "tags": [
+    "sprite",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "journal-keeper",
+  "type": "sprite",
+  "renderer": "hubNpc",
+  "frameSize": [
+    32,
+    32
+  ],
+  "description": "Original arctic villager seen strictly from overhead: hood crown, mittens, boots and working hands. Warm merchant coat or blue journal keeper with book.",
+  "references": [
+    "assets/references/merchant-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

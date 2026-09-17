@@ -1,0 +1,51 @@
+{
+  "transparent": false,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 3
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "tile",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "shore",
+  "type": "tile",
+  "renderer": "shore",
+  "frameSize": [
+    32,
+    16
+  ],
+  "description": "Left land, right water. Bank at x=20; stepped snow shelf and layered cyan submerged ice lip.",
+  "references": [
+    "assets/references/ice-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

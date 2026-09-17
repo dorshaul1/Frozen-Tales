@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "arctic",
+    "village"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "description": "Original native overhead village artwork: canonical fur hood, timber, layered snow, connected material highlights. No facade or perspective tilt.",
+  "references": [
+    "assets/references/fisherman-reference.png",
+    "assets/references/merchant-reference.png",
+    "assets/references/cabin-reference.png"
+  ],
+  "id": "village-drying-rack",
+  "type": "prop",
+  "renderer": "settlementDetail",
+  "frameSize": [
+    48,
+    28
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 4
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 5
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "geology-rock",
+  "type": "prop",
+  "renderer": "environmentArt",
+  "frameSize": [
+    44,
+    40
+  ],
+  "description": "Rounded, sharp, buried, blue ice, fractured glacier and drift-covered rock studies.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/ice-reference.png",
+    "assets/references/pine-reference.png"
+  ]
+}

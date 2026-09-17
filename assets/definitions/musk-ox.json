@@ -1,0 +1,606 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "alert",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "NE",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "alert",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "alert",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "SE",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "alert",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "alert",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "SW",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "alert",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "alert",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "NW",
+      "animation": "rest",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "rest",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "forage",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "forage",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "alert",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "alert",
+      "index": 1
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    },
+    "walk": {
+      "fps": 4
+    },
+    "rest": {
+      "fps": 1
+    },
+    "inspect": {
+      "fps": 2
+    },
+    "forage": {
+      "fps": 2
+    },
+    "alert": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "sprite",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "musk-ox",
+  "type": "sprite",
+  "renderer": "arcticWildlifeArt",
+  "frameSize": [
+    48,
+    40
+  ],
+  "description": "Native arctic musk-ox with authored profiles, front, back and quarter views; species-specific silhouette, gait, feeding and observation. Original palette, no rotation.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

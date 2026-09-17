@@ -1,0 +1,114 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 1
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 2
+    },
+    "walk": {
+      "fps": 5
+    }
+  },
+  "tags": [
+    "arctic",
+    "village"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "description": "Original native arctic cartographer with role-specific clothing and handheld equipment; individually drawn cardinal views.",
+  "references": [
+    "assets/references/fisherman-reference.png",
+    "assets/references/merchant-reference.png",
+    "assets/references/cabin-reference.png"
+  ],
+  "id": "remote-cartographer",
+  "type": "prop",
+  "renderer": "remoteNpcArt",
+  "frameSize": [
+    32,
+    32
+  ]
+}

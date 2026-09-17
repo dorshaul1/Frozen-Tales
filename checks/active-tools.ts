@@ -1,0 +1,28 @@
+import Phaser from 'phaser';
+import {RiverScene} from '../src/game/scenes/RiverScene';
+import {SaveStore} from '../src/game/player/SaveStore';
+import {TOOL_IDS} from '../src/game/upgrades/data';
+const keyName='arctic-drift.check-active-tools',store=new SaveStore(keyName);localStorage.removeItem(keyName);store.write({...store.load(),money:2500});
+const out=document.querySelector('#result')!,check=(ok:boolean,s:string)=>{out.textContent+='\n'+(ok?'PASS ':'FAIL ')+s;if(!ok)throw Error(s);};
+const scene=new RiverScene(keyName,true),game=new Phaser.Game({type:Phaser.AUTO,width:800,height:650,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});
+const wait=(ms:number)=>new Promise(r=>setTimeout(r,ms)),tap=async(code:number)=>{window.dispatchEvent(new KeyboardEvent('keydown',{keyCode:code,which:code,bubbles:true}));await wait(75);window.dispatchEvent(new KeyboardEvent('keyup',{keyCode:code,which:code,bubbles:true}));await wait(700);};
+while(!scene.fishing)await wait(100);game.events.off(Phaser.Core.Events.BLUR);
+const tools=Reflect.get(scene,'tools'),home=Reflect.get(scene,'home'),kayak=Reflect.get(scene,'kayak'),e=scene.equipment,body=kayak.body as Phaser.Physics.Arcade.Body;
+for(const id of TOOL_IDS){check(e.purchase(id)==='purchased','Shop purchase grants '+id);}
+check(e.ownedTools.length===6&&e.loadout.every(id=>id===null),'Six tools use no kayak slots');
+body.reset(630,1510);kayak.rotation=Math.PI;
+e.selectTool('finder');await tap(70);check(Reflect.get(tools,'readout').text.includes('WATER')&&Reflect.get(tools,'action')==='finder','F performs a water scan without revealing species');
+check(!Reflect.get(tools,'readout').text.includes('Whitefish'),'Finder does not promise exact catches');
+e.selectTool('probe');await tap(70);check(Reflect.get(tools,'readout').text.includes('Sounding ahead'),'Probe reads water in facing direction');
+e.selectTool('binoculars');await tap(70);check(scene.cameras.main.followOffset.length()>100,'Binoculars extend the actual camera view');
+await wait(3300);check(scene.cameras.main.followOffset.length()===0,'Inspection returns camera automatically');
+e.selectTool('lantern');await tap(70);check(e.gear.lanternLit===true,'Lantern toggles on in kayak');
+home.walking=true;home.fisherman.setVisible(true).setPosition(349,1206);home.setMovementEnabled(true);await tap(70);check(e.gear.lanternLit===false,'Lantern toggles on foot');await tap(70);
+e.selectTool('finder');await tap(70);check(Reflect.get(tools,'readout').text.includes('closer to water'),'Finder gives contextual feedback inland');
+e.selectTool('bait');await tap(70);check(e.baitLevel===0&&e.levels.bait===1,'Bait tool changes active bait without removing ownership');await tap(70);check(e.baitLevel===1,'Bait tool cycles back to owned kit');
+e.selectTool('guide');await tap(70);check(Reflect.get(tools,'readout').text.includes('STARTING RIVER'),'Field guide uses current area');
+const previous=e.belt.filter(Boolean).at(-2);await tap(81);check(e.gear.selectedTool===previous,'Q cycles assigned tools');await tap(82);check(e.gear.selectedTool==='guide','R cycles forward');
+scene.harborPanel.open('tools');const selected=e.gear.selectedTool;await tap(81);await tap(70);check(e.gear.selectedTool===selected&&scene.harborPanel.isOpen,'Shop suppresses tool shortcuts');scene.harborPanel.close();
+e.selectTool('probe');e.save();const restored=new RiverScene(keyName,true);check(restored.equipment.gear.selectedTool==='probe'&&restored.equipment.gear.lanternLit===true&&restored.equipment.baitLevel===1&&restored.equipment.ownedTools.length===6,'Save restores selection, lantern, bait and ownership');
+const button=document.createElement('button');button.textContent='Show tools shop';button.onclick=()=>{scene.harborPanel.open('tools');Reflect.set(scene.harborPanel,'selection',6);Reflect.get(scene.harborPanel,'refresh').call(scene.harborPanel);};document.body.prepend(button);
+out.textContent+='\nALL ACTIVE TOOL CHECKS PASSED';

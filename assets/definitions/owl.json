@@ -1,0 +1,440 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "NE",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "NE",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "E",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "SE",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "SE",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "S",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "SW",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "SW",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "W",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "NW",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "NW",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "inspect",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "inspect",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "perch",
+      "index": 1
+    },
+    {
+      "direction": "NE",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "NE",
+      "animation": "perch",
+      "index": 1
+    },
+    {
+      "direction": "E",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "E",
+      "animation": "perch",
+      "index": 1
+    },
+    {
+      "direction": "SE",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "SE",
+      "animation": "perch",
+      "index": 1
+    },
+    {
+      "direction": "S",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "S",
+      "animation": "perch",
+      "index": 1
+    },
+    {
+      "direction": "SW",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "SW",
+      "animation": "perch",
+      "index": 1
+    },
+    {
+      "direction": "W",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "W",
+      "animation": "perch",
+      "index": 1
+    },
+    {
+      "direction": "NW",
+      "animation": "perch",
+      "index": 0
+    },
+    {
+      "direction": "NW",
+      "animation": "perch",
+      "index": 1
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    },
+    "walk": {
+      "fps": 5
+    },
+    "inspect": {
+      "fps": 1
+    },
+    "perch": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "sprite",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "owl",
+  "type": "sprite",
+  "renderer": "wildlife",
+  "frameSize": [
+    40,
+    40
+  ],
+  "description": "Original owl: authored front, rear, profile and quarter poses; native canvas, no rotation. Species-specific anatomy, alternating limbs and quiet idle frames.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

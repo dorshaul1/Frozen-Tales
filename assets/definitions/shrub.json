@@ -1,0 +1,41 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "shrub",
+  "type": "prop",
+  "renderer": "vegetation",
+  "frameSize": [
+    32,
+    32
+  ],
+  "description": "Low top-down arctic pine tuft, radial branches, patchy snow. Never a side-view tree.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

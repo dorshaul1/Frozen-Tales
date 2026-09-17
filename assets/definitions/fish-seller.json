@@ -1,0 +1,120 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "walk",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "warm",
+      "index": 3
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 2
+    },
+    {
+      "direction": "N",
+      "animation": "work",
+      "index": 3
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 2
+    },
+    "walk": {
+      "fps": 6
+    },
+    "warm": {
+      "fps": 2
+    },
+    "work": {
+      "fps": 3
+    }
+  },
+  "tags": [
+    "arctic",
+    "village"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "description": "Original native overhead village artwork: canonical fur hood, timber, layered snow, connected material highlights. No facade or perspective tilt.",
+  "references": [
+    "assets/references/fisherman-reference.png",
+    "assets/references/merchant-reference.png",
+    "assets/references/cabin-reference.png"
+  ],
+  "id": "fish-seller",
+  "type": "sprite",
+  "renderer": "villagePerson",
+  "frameSize": [
+    32,
+    32
+  ]
+}

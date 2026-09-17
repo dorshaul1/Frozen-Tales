@@ -1,0 +1,47 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "ice-fragment",
+  "collision": true,
+  "type": "prop",
+  "renderer": "ice",
+  "frameSize": [
+    24,
+    20
+  ],
+  "description": "Small natural broken ice fragment, asymmetric cyan outline and pale snow cap.",
+  "references": [
+    "assets/references/ice-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

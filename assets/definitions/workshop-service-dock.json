@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "workshop-service-dock",
+  "type": "sprite",
+  "renderer": "villageYardArt",
+  "frameSize": [
+    208,
+    136
+  ],
+  "description": "Handcrafted native top-down arctic repair yard: shore-fast plank decking, an open kayak slip, a hand-cranked hoist, spare hull and repair equipment. Original palette, no antialiasing.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

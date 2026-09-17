@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "fish-burbot",
+  "type": "ui",
+  "renderer": "fishPortrait",
+  "frameSize": [
+    44,
+    28
+  ],
+  "description": "Original native pixel-art specimen: silver sail-finned grayling, mottled barbel-bearing burbot, or pale armored sturgeon with golden scutes. Distinct fins, anatomy and silhouette; canonical fish palette.",
+  "references": [
+    "assets/references/fish-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

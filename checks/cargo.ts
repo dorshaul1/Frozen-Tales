@@ -1,0 +1,21 @@
+import Phaser from 'phaser';
+import { HUB, Home } from '../src/game/home/Home';
+import { RiverScene } from '../src/game/scenes/RiverScene';
+import { SaveStore } from '../src/game/player/SaveStore';
+import { capacityAt } from '../src/game/upgrades/data';
+const out=document.querySelector('#result')!;const check=(ok:boolean,s:string)=>{out.textContent+='\n'+(ok?'PASS ':'FAIL ')+s;if(!ok)throw Error(s);};
+const key='arctic-drift.check-cargo';localStorage.removeItem(key);
+const scene=new RiverScene(key,true);new Phaser.Game({type:Phaser.AUTO,parent:'test',width:1000,height:700,pixelArt:true,physics:{default:'arcade'},scene:[scene]});
+while(!scene.fishing)await new Promise(r=>setTimeout(r,100));
+const c=scene.cargo,p=scene.harborPanel as any;
+for(let i=0;i<5;i++)c.add(i%2?'crown':'whitefish');
+check(c.full&&c.count===5,'Each fish occupies one slot regardless of weight');
+const next=c.createCatch('salmon');p.openCargo(next);p.selection=0;p.activate();check(c.count===5&&!c.entries.includes(next),'Release new catch preserves hold');
+p.openCargo(next);p.selection=2;p.activate();check(!c.entries.includes(next),'Replacement requires confirmation');p.activate();check(c.count===5&&c.entries.includes(next),'Replacement keeps new fish without exceeding capacity');
+p.close();p.openCargo();p.selection=1;p.activate();check(c.count===5,'Discard needs confirmation');p.activate();check(c.count===4&&scene.wallet.balance===0,'Manual release gives no money');p.close();
+scene.wallet.credit(2000);for(let i=1;i<=4;i++){scene.equipment.purchase('cargo');check(c.capacity===capacityAt(i),'Storage level '+i);}
+while(!c.full)c.add('whitefish');scene.equipment.save();const saved=new SaveStore(key).load();check(saved.cargo.length===20&&capacityAt(saved.levels.cargo)===20,'Save restores all twenty slots and upgrade');
+const home=Reflect.get(scene,'home') as Home;home.walking=true;home.fisherman.setPosition(HUB.seller.x,HUB.seller.y);
+const total=c.totalValue,balance=scene.wallet.balance;p.open('cargo');p.selection=0;p.activate();check(c.count===0&&scene.wallet.balance===balance+total,'Seller UI clears cargo and pays exact haul value');p.close();
+check(new SaveStore(key).load().cargo.length===0,'Sold cargo remains empty after load');
+c.add('salmon');c.add('trout');p.openCargo(c.createCatch('crown'));check(true,'Visual cargo preview');

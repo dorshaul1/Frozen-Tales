@@ -1,0 +1,13 @@
+{
+  "ink": "#1c303e", "deep": "#223c50", "water": "#294c60", "waterShade": "#274659",
+  "waterLight": "#30566a", "wave": "#396779", "ripple": "#548590",
+  "iceDark": "#527f90", "iceShade": "#72a4b3", "ice": "#9dc5cc", "iceLight": "#c0dce0",
+  "snowDeep": "#9bB7c5", "snowShade": "#bdcfd8", "snow": "#dde7e5", "snowLight": "#f1f1df",
+  "pineDark": "#314b4b", "pine": "#4a6860", "pineLight": "#708779",
+  "rockDark": "#566977", "rock": "#7b929c", "rockLight": "#a4b7bc",
+  "woodDark": "#4d3c35", "woodShade": "#70513f", "wood": "#947052", "woodLight": "#b08d63", "woodEdge": "#c4a878",
+  "rustDark": "#713f37", "rust": "#a85d43", "rustLight": "#cc8154", "rustEdge": "#e3a46d",
+  "parkaDark": "#344c59", "parka": "#52717a", "parkaLight": "#7a9696",
+  "furDark": "#a89f86", "fur": "#d0c7a8", "furLight": "#ece0ba",
+  "amberDark": "#bf8546", "amber": "#e7b664", "lamp": "#f5d990"
+}

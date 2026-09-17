@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "gear-hull",
+  "type": "ui",
+  "renderer": "modulesArt",
+  "frameSize": [
+    24,
+    24
+  ],
+  "description": "Original native arctic equipment: distinct fishing rod models, compact rust motor and fitted steel hull rails. Shared snow, timber and blue steel palette.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

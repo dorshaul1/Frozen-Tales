@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "cargo-icon",
+  "type": "ui",
+  "renderer": "icon",
+  "frameSize": [
+    16,
+    16
+  ],
+  "description": "Small woven wood fish basket with a pale fish silhouette.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

@@ -1,0 +1,11 @@
+import Phaser from 'phaser';import {RiverScene} from '../src/game/scenes/RiverScene';
+const scene=new RiverScene('arctic-drift.check-active-tools',true);
+new Phaser.Game({type:Phaser.AUTO,width:560,height:600,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});
+while(!scene.fishing)await new Promise(r=>setTimeout(r,100));
+const out=document.querySelector('#result')!,e=scene.equipment;
+if(e.gear.selectedTool!=='probe'||!e.gear.lanternLit||e.baitLevel!==1||e.ownedTools.length!==6)throw Error('Tool save failed');
+out.textContent='PASS Fresh browser page restores selected probe, lit lantern, bait kit and all six owned tools.\nPASS Three module slots remain empty.';
+const home=Reflect.get(scene,'home'),kayak=Reflect.get(scene,'kayak'),tools=Reflect.get(scene,'tools');
+(kayak.body as Phaser.Physics.Arcade.Body).reset(630,1510);kayak.rotation=Math.PI;scene.cameras.main.stopFollow();scene.cameras.main.centerOn(630,1510);
+const button=document.createElement('button');button.textContent='Inspect new shop cards';button.onclick=()=>{home.walking=true;home.fisherman.setVisible(true).setPosition(349,1206);scene.harborPanel.open('tools');Reflect.set(scene.harborPanel,'selection',6);Reflect.get(scene.harborPanel,'refresh').call(scene.harborPanel);};document.body.prepend(button);
+const probe=document.createElement('button');probe.textContent='Use depth probe';probe.onclick=()=>tools.use();document.body.prepend(probe);

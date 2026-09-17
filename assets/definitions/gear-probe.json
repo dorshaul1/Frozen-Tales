@@ -1,0 +1,36 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "gear-probe",
+  "type": "ui",
+  "renderer": "modulesArt",
+  "frameSize": [
+    24,
+    24
+  ],
+  "description": "Native arctic personal tools: brass binoculars, sounding reel and field notebook; warm leather toolbelt and hand-use animation frames.",
+  "references": [
+    "assets/references/gear-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

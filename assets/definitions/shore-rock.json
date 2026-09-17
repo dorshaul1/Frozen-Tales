@@ -1,0 +1,52 @@
+{
+  "transparent": false,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 3
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "shore-rock",
+  "type": "prop",
+  "renderer": "shore",
+  "frameSize": [
+    32,
+    16
+  ],
+  "description": "Contour material: rock shoreline with fixed bank at x20, submerged lip and snow transition.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/ice-reference.png",
+    "assets/references/pine-reference.png"
+  ]
+}

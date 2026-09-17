@@ -1,0 +1,25 @@
+{
+  "name": "arctic-fishing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run assets:build && npm run assets:validate && tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "assets:generate": "node scripts/assets/generate.mjs",
+    "assets:bootstrap": "node scripts/assets/bootstrap.mjs",
+    "assets:build": "node scripts/assets/build.mjs",
+    "assets:validate": "node scripts/assets/validate.mjs",
+    "assets:test": "node scripts/assets/test.mjs",
+    "assets:preview": "node scripts/assets/preview.mjs"
+  },
+  "dependencies": {
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "pngjs": "^7.0.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "Agent-selected canonical production baseline; not explicitly user-approved",
+  "mood": {
+    "file": "arctic-mood.png",
+    "provider": "Built-in image_gen",
+    "purpose": "Original material/mood reference only; not a final game sprite",
+    "prompt": "arctic-mood.prompt.txt"
+  },
+  "nativeReferences": {
+    "kayak": "kayak",
+    "snow": "snow",
+    "water": "water",
+    "ice": "shore",
+    "cabin": "cabin",
+    "dock": "dock",
+    "pine": "tree-mature",
+    "penguin": "penguin",
+    "bear": "polar-bear",
+    "merchant": "merchant",
+    "fish": "fish-char",
+    "gear": "gear-rod",
+    "fisherman": "Crop of native kayak source, x12 y14 w24 h27"
+  },
+  "promotion": "Run assets:bootstrap only for deliberate whole-set regeneration. Do not overwrite references casually."
+}

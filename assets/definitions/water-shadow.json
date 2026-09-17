@@ -1,0 +1,74 @@
+{
+  "id": "water-shadow",
+  "frameSize": [
+    48,
+    32
+  ],
+  "type": "sprite",
+  "renderer": "waterShadow",
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 4
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 5
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 6
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 7
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 8
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "normalization": {
+    "fit": "exact"
+  },
+  "tags": [
+    "water",
+    "fishing"
+  ],
+  "description": "Three anonymous underwater fish silhouettes: small, broad and swift. Fins and tapered tails, dark water palette, no species markings.",
+  "references": [
+    "assets/references/fish-reference.png"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "N",
+      "animation": "idle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "tile",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "thin-channel-ice",
+  "type": "prop",
+  "renderer": "traversalArt",
+  "frameSize": [
+    96,
+    24
+  ],
+  "description": "Thin translucent-looking ice shelf with jagged snow dusting and branching fractures, native pixel art.",
+  "references": [
+    "assets/references/ice-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

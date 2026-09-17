@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173642" />
+    <title>Arctic Drift</title>
+  </head>
+  <body>
+    <div id="game" aria-label="Arctic river. Move your kayak with WASD or arrow keys."></div>
+    <button id="settings-button" type="button" aria-label="Pause game and open settings" aria-expanded="false">Ⅱ</button>
+    <button id="map-button" type="button" aria-label="Open world map" aria-expanded="false">Map</button>
+    <aside class="hud" aria-label="Kayak cargo and money"><button id="cargo-button" type="button" title="Open fish cargo"><small>CARGO</small><span class="hud-value"><img id="cargo-icon" alt="" width="16" height="16"><span id="cargo">Fish: 0 / 5</span></span><small id="haul">Haul: $0</small></button><span title="Money"><small>MONEY</small><span class="hud-value"><img id="coin-icon" alt="" width="16" height="16"><span id="money">$0</span></span></span></aside>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

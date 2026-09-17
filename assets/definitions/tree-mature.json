@@ -1,0 +1,46 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "tree-mature",
+  "type": "prop",
+  "renderer": "vegetation",
+  "frameSize": [
+    48,
+    48
+  ],
+  "description": "Original true overhead arctic tree-mature; shared pine/snow/wood palette, connected organic silhouette.",
+  "references": [
+    "assets/references/pine-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

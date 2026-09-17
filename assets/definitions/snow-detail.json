@@ -1,0 +1,57 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 3
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 4
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "prop",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "snow-detail",
+  "type": "prop",
+  "renderer": "environmentArt",
+  "frameSize": [
+    96,
+    64
+  ],
+  "description": "Sparse feathered drift, wind scour, ice patch, old tracks and uneven snow clusters.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/ice-reference.png",
+    "assets/references/pine-reference.png"
+  ]
+}

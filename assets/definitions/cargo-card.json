@@ -1,0 +1,51 @@
+{
+  "transparent": true,
+  "padding": 1,
+  "frames": [
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 0
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 1
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 2
+    },
+    {
+      "direction": "none",
+      "animation": "idle",
+      "index": 3
+    }
+  ],
+  "animations": {
+    "idle": {
+      "fps": 1
+    }
+  },
+  "tags": [
+    "ui",
+    "arctic",
+    "canonical"
+  ],
+  "normalization": {
+    "fit": "exact"
+  },
+  "id": "cargo-card",
+  "type": "ui",
+  "renderer": "uiSkin",
+  "frameSize": [
+    168,
+    54
+  ],
+  "description": "Native pixel timber frame with brass corner pins and dark quiet inset. Four states: normal, selected, unavailable, mastered.",
+  "references": [
+    "assets/references/snow-reference.png",
+    "assets/references/arctic-mood.png"
+  ]
+}

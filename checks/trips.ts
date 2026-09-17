@@ -1,0 +1,11 @@
+import {Trips} from '../src/game/player/Trips';
+import {Cargo} from '../src/game/player/Cargo';
+import Phaser from 'phaser';import {RiverScene} from '../src/game/scenes/RiverScene';import {showTripSummary} from '../src/game/ui/TripSummary';
+const out=document.querySelector('#result')!,check=(v:boolean,s:string)=>{out.textContent+=(v?'PASS ':'FAIL ')+s+'\n';if(!v)throw Error(s);};
+const trips=new Trips(),cargo=new Cargo();const fish=cargo.createCatch('salmon');trips.start(100);trips.catch(fish,110);trips.catch(fish,120);
+check(!trips.sell([fish],20,false,200,()=>20,()=>19),'Partial sale retains trip');
+const restored=new Trips(JSON.parse(JSON.stringify(trips.state)));const summary=restored.sell([fish],20,true,300,()=>20,()=>19)!;
+check(summary.earnings===40&&summary.caught===2&&summary.duration===200&&summary.freshness===2,'Totals and duration correct after reload');
+check(!restored.state.active&&restored.state.lifetime.trips===1,'Completed trip resets once');restored.start(400);check(restored.state.active?.caught===0,'Next trip starts empty');
+const scene=new RiverScene(null,true);new Phaser.Game({type:Phaser.AUTO,width:900,height:650,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});while(!scene.fishing)await new Promise(r=>setTimeout(r,100));showTripSummary(scene,summary);
+const button=document.createElement('button');button.textContent='Show summary';button.onclick=()=>showTripSummary(scene,summary);document.body.prepend(button);
