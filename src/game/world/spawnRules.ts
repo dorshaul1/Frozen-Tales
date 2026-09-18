@@ -1,4 +1,4 @@
-import {networkAt,WORLD_SIZE} from './regionNetwork';
+import {networkAt,WORLD_SIZE,NETWORK_ROUTES} from './regionNetwork';
 import {WILDLIFE_SIZE} from './wildlifeSize';
 import type { FishTable } from '../fishing/data';
 import { AREAS } from './areas';
@@ -24,7 +24,7 @@ export function areaAt(y:number,x?:number):AreaId {
 export const DYNAMIC = {
   tick: 5, spacing: 155, homeExclusion: 170, recentDistance: 95, recentLifetime: 180,
   fishLifetime: [75, 150], fishCooldown: [25, 45], rareCooldown: 100,
-  rareActivityChance: .035, trophyBonus: 1.22, wildlifeLimit: 36,
+  rareActivityChance: .035, trophyBonus: 1.22, wildlifeLimit: 96,
   tripHomeRadius: 140, tripLeaveRadius: 270,
 };
 const all: AreaId[] = ['starting', 'bend', 'lake', 'gorge', 'estuary'];
@@ -32,24 +32,30 @@ export const ANIMAL_RULES = {
  'musk-ox': {areas:['lake'] as AreaId[],terrain:'snow',rarity:'rare',group:[2,3],probability:.055,maxActive:3,playerDistance:220,homeDistance:250,cooldown:220,lifetime:150,radius:WILDLIFE_SIZE['musk-ox'].radius},
  wolf: {areas:['lake','gorge'] as AreaId[],terrain:'snow',rarity:'rare',group:[1,3],probability:.025,maxActive:3,playerDistance:210,homeDistance:250,cooldown:200,lifetime:120,radius:WILDLIFE_SIZE.wolf.radius},
  wolverine: {areas:['gorge'] as AreaId[],terrain:'snow',rarity:'rare',group:[1,1],probability:.012,maxActive:1,playerDistance:200,homeDistance:250,cooldown:240,lifetime:95,radius:WILDLIFE_SIZE.wolverine.radius},
- raven: {areas:['starting','bend','gorge'] as AreaId[],terrain:'air',rarity:'uncommon',group:[1,2],probability:.16,maxActive:3,playerDistance:170,homeDistance:190,cooldown:65,lifetime:65,radius:WILDLIFE_SIZE.raven.radius},
+ raven: {areas:['starting','bend','lake','gorge'] as AreaId[],terrain:'air',rarity:'uncommon',group:[1,2],probability:.25,maxActive:5,playerDistance:170,homeDistance:190,cooldown:38,lifetime:90,radius:WILDLIFE_SIZE.raven.radius},
   fox: { areas: all, terrain:'snow', rarity:'rare', group:[1,1], probability:.06, maxActive:2, playerDistance:180,homeDistance:190,cooldown:120,lifetime:90,radius:WILDLIFE_SIZE['fox'].radius },
-  hare: { areas: all, terrain:'snow', rarity:'uncommon', group:[1,3], probability:.3, maxActive:5, playerDistance:160,homeDistance:170,cooldown:55,lifetime:85,radius:WILDLIFE_SIZE['hare'].radius },
-  reindeer: { areas: ['starting','bend'] as AreaId[], terrain:'snow', rarity:'uncommon', group:[2,4], probability:.15, maxActive:4, playerDistance:220,homeDistance:250,cooldown:150,lifetime:120,radius:WILDLIFE_SIZE['reindeer'].radius },
-  otter: { areas: ['starting','bend'] as AreaId[], terrain:'snow', rarity:'uncommon', group:[1,2], probability:.15, maxActive:2, playerDistance:170,homeDistance:200,cooldown:95,lifetime:80,radius:WILDLIFE_SIZE['otter'].radius },
+  hare: { areas: all, terrain:'snow', rarity:'uncommon', group:[1,3], probability:.42, maxActive:8, playerDistance:160,homeDistance:170,cooldown:35,lifetime:110,radius:WILDLIFE_SIZE['hare'].radius },
+  reindeer: { areas: ['starting','bend','lake'] as AreaId[], terrain:'snow', rarity:'uncommon', group:[2,5], probability:.23, maxActive:7, playerDistance:220,homeDistance:250,cooldown:90,lifetime:160,radius:WILDLIFE_SIZE['reindeer'].radius },
+  otter: { areas: ['starting','bend'] as AreaId[], terrain:'snow', rarity:'uncommon', group:[1,2], probability:.28, maxActive:4, playerDistance:170,homeDistance:200,cooldown:50,lifetime:110,radius:WILDLIFE_SIZE['otter'].radius },
   owl: { areas: all, terrain:'air', rarity:'rare', group:[1,1], probability:.04, maxActive:1, playerDistance:180,homeDistance:190,cooldown:180,lifetime:24,radius:WILDLIFE_SIZE['owl'].radius },
   penguin: { areas: all, terrain: 'snow', rarity: 'common', group: [3, 7], probability: .90, maxActive: 24, playerDistance: 180, homeDistance: 185, cooldown: 12, lifetime: 160, radius:WILDLIFE_SIZE['penguin'].radius },
-  seal: { areas: all, terrain: 'floe', rarity: 'uncommon', group: [1, 2], probability: .24, maxActive: 5, playerDistance: 180, homeDistance: 200, cooldown: 60, lifetime: 130, radius:WILDLIFE_SIZE['seal'].radius },
+  seal: { areas: all, terrain: 'floe', rarity: 'uncommon', group: [1, 2], probability: .36, maxActive: 8, playerDistance: 180, homeDistance: 200, cooldown: 38, lifetime: 150, radius:WILDLIFE_SIZE['seal'].radius },
   'polar-bear': { areas: ['bend', 'lake', 'gorge'] as AreaId[], terrain: 'snow', rarity: 'rare', group: [1, 1], probability: .012, maxActive: 1, playerDistance: 240, homeDistance: 450, cooldown: 300, lifetime: 140, radius:WILDLIFE_SIZE['polar-bear'].radius },
-  bird: { areas: all, terrain: 'air', rarity: 'common', group: [1, 3], probability: .55, maxActive: 7, playerDistance: 160, homeDistance: 180, cooldown: 25, lifetime: 35, radius:WILDLIFE_SIZE['bird'].radius },
+  bird: { areas: all, terrain: 'air', rarity: 'common', group: [1, 3], probability: .55, maxActive: 10, playerDistance: 160, homeDistance: 180, cooldown: 16, lifetime: 65, radius:WILDLIFE_SIZE['bird'].radius },
 } as const;
 export type AnimalId = keyof typeof ANIMAL_RULES;
 
 export const ECOLOGY:Record<AreaId,Partial<Record<AnimalId,number>>>={
  estuary:{penguin:.15,hare:0,reindeer:0,otter:0,bird:1.4,seal:1.3,fox:.3,owl:.3,'polar-bear':.2},
- gorge:{penguin:0,hare:0,reindeer:0,otter:0,bird:.25,seal:1.1,fox:.7,owl:1.4,'polar-bear':.8},
+ gorge:{raven:1.6,penguin:0,hare:0,reindeer:0,otter:0,bird:.25,seal:1.1,fox:.7,owl:1.4,'polar-bear':.8},
  starting:{fox:1.35,hare:1.7,bird:1.5,otter:1.25,seal:.3,reindeer:.25,owl:.5},
  bend:{penguin:1.15,seal:1.6,reindeer:1.5,fox:1.3,otter:1.2,bird:.7},
- lake:{'polar-bear':1.05,penguin:.2,bird:.25,hare:.2,seal:.65,fox:.35,owl:1.1},
+ lake:{raven:.9,reindeer:.85,'polar-bear':1.05,penguin:.2,bird:.65,hare:.4,seal:1.1,fox:.35,owl:1.1},
 };
 export const ANIMAL_SPEED:Record<AnimalId,number>={'musk-ox':8,wolf:18,wolverine:16,raven:28,penguin:10,'polar-bear':7,seal:5,bird:32,owl:23,fox:17,hare:19,reindeer:11,otter:12};
+
+// Authored water footprint supplies regional budgets; local caps preserve quiet screens.
+export const WILDLIFE_DENSITY=Object.fromEntries((Object.keys(AREA_SPAWNS) as AreaId[]).map(area=>{
+ const footprint=NETWORK_ROUTES.filter(r=>r.area===area).reduce((sum,r)=>sum+r.points.slice(1).reduce((n,p,i)=>n+Math.hypot(p[0]-r.points[i][0],p[1]-r.points[i][1])*(p[2]+r.points[i][2]),0),0);
+ const scale=Math.min(3.2,1.8+footprint/6000000);return [area,{budget:Math.round(22*scale),scale}];
+})) as Record<AreaId,{budget:number;scale:number}>;

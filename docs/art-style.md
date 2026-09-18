@@ -1,4 +1,4 @@
-# Arctic Drift — visual source of truth
+# Frozen Tales — visual source of truth
 
 Cozy, cold, isolated, slightly magical. Original overhead pixel art with the material richness of a 16-bit RPG. Warm rust-orange kayak and amber home lights are focal accents against quiet blue water. Do not imitate a named game's assets, palette, characters, or exact visual language.
 

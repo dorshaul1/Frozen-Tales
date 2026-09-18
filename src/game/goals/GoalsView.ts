@@ -1,3 +1,4 @@
+import {gameplayCode} from '../input/physicalKeyboard';
 import Phaser from 'phaser';
 import {pixelText,hudPixelText} from '../ui/PixelText';
 import {positionPanel} from '../ui/panelPosition';
@@ -16,7 +17,7 @@ export class GoalsView {
  window.addEventListener('keydown',this.key,true);scene.events.once('shutdown',()=>{window.removeEventListener('keydown',this.key,true);window.removeEventListener('resize',this.alignPreview);scene.scale.off('resize',this.alignPreview);if(this.isOpen)this.close();this.preview.remove();});
  }
  private alignPreview=()=>{const r=document.getElementById('settings-button')?.getBoundingClientRect()??this.scene.game.canvas.getBoundingClientRect();this.preview.style.left=`${Math.round(r.left)}px`;this.preview.style.top=`${Math.round(r.bottom+(document.getElementById('settings-button')?12:0))}px`;};
- private key=(e:KeyboardEvent)=>{if(!this.isOpen){if(e.code!=='KeyO'||!this.allowed||e.repeat)return;e.preventDefault();e.stopImmediatePropagation();this.open();return;}e.preventDefault();e.stopImmediatePropagation();if(e.repeat)return;if(e.code==='Escape'||e.code==='KeyO')this.close();if(e.code==='ArrowRight'){this.page++;this.draw();}if(e.code==='ArrowLeft'){this.page=Math.max(0,this.page-1);this.draw();}};
+ private key=(e:KeyboardEvent)=>{if(!gameplayCode(e))return;if(!this.isOpen){if(gameplayCode(e)!=='KeyO'||!this.allowed||e.repeat)return;e.preventDefault();e.stopImmediatePropagation();this.open();return;}e.preventDefault();e.stopImmediatePropagation();if(e.repeat)return;if(gameplayCode(e)==='Escape'||gameplayCode(e)==='KeyO')this.close();if(gameplayCode(e)==='ArrowRight'){this.page++;this.draw();}if(gameplayCode(e)==='ArrowLeft'){this.page=Math.max(0,this.page-1);this.draw();}};
  open(){if(!this.allowed||this.isOpen)return;this.isOpen=true;this.tab='ACTIVE';this.page=0;this.preview.style.display='none';this.preview.setAttribute('aria-expanded','true');this.scene.input.keyboard!.resetKeys();this.scene.input.keyboard!.enabled=false;this.lock(true);this.draw();}
  close(){this.isOpen=false;this.screen.setVisible(false);this.preview.style.display=this.allowed?'block':'none';this.preview.setAttribute('aria-expanded','false');this.scene.input.keyboard!.enabled=true;this.scene.input.keyboard!.resetKeys();this.lock(false);}
  private list(){return this.goals.state.current.filter(g=>this.tab==='COMPLETED'?g.completeAt!==undefined:g.completeAt===undefined&&(this.tab==='LONG-TERM'?g.scope==='long':g.scope!=='long')).sort((a,b)=>this.tab==='COMPLETED'?(b.completeAt??0)-(a.completeAt??0):0);}

@@ -1,4 +1,4 @@
-# Arctic Drift
+# Frozen Tales
 
 A small Phaser 3 + TypeScript + Vite fishing game: explore a frozen river, catch fish, fill the kayak, trade at home, and improve the next outing.
 

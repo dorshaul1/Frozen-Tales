@@ -1,3 +1,5 @@
+import {installPhysicalKeyboard} from '../input/physicalKeyboard';
+import {beginLoading,setLoadingProgress,finishLoading,loadingFailed} from '../boot/loading';
 import {REMOTE_NPCS} from '../home/remoteNpcData';
 import {landings} from '../home/Landings';
 import {MAP_MARKERS} from '../map/discovery';
@@ -112,7 +114,20 @@ export class RiverScene extends Phaser.Scene {
     this.equipment = new Equipment(this.cargo, this.wallet, store, saved.levels, saved.loadout);
   }
 
-  preload() { loadAssets(this); AudioManager.preload(this); }
+  preload() {
+    installPhysicalKeyboard(this);
+    beginLoading();
+    this.load.on('progress',(value:number)=>setLoadingProgress(value*.75,'Checking the river…'));
+    this.load.once('loaderror',loadingFailed);
+    this.load.once('complete',()=>setLoadingProgress(.8,'Watching the ice…'));
+    this.events.once('create',()=>{
+      setLoadingProgress(.95,'Launching the kayak…');
+      // Scene create includes restoration and terrain baking. Wait for two actual
+      // rendered frames, including the first update, before exposing world and HUD.
+      this.game.events.once('postrender',()=>this.game.events.once('postrender',finishLoading));
+    });
+    loadAssets(this); AudioManager.preload(this);
+  }
 
   create() {
     setEventDay(readEventDay(this.store.load().areaEvents),this.environment.snapshot().elapsed);
@@ -123,7 +138,6 @@ export class RiverScene extends Phaser.Scene {
     createTextures(this);
     this.cameras.main.roundPixels=false;
     document.querySelectorAll<HTMLElement>('.hud small:not(#haul)').forEach(el=>hudPixelText(el,el.getAttribute('aria-label')??el.textContent??'',1,'#c0dce0'));
-    hudPixelText(document.getElementById('map-button'),'MAP',2,'#f3d49a');
     this.ripples = [];
     this.wakeTimer = 0;
     const land = createRiver(this);

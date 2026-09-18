@@ -67,8 +67,8 @@ export class Ambience {
     const dt = Math.min(delta, 50) / 1000, view = this.scene.cameras.main.worldView;
     this.syncEncounters();
     const trees=(this.scene.registry.get('treeCrowns')??[]) as Point[];
-    const active=(p:Point)=>p.x>view.left-100&&p.x<view.right+100&&p.y>view.top-100&&p.y<view.bottom+100;
-    for(const goal of this.groups.values())if(goal.encounter.points.some(active)){
+    const active=(p:Point,margin=100)=>p.x>view.left-margin&&p.x<view.right+margin&&p.y>view.top-margin&&p.y<view.bottom+margin;
+    for(const goal of this.groups.values())if(goal.encounter.points.some(p=>active(p,ANIMAL_RULES[goal.encounter.species].terrain==='air'?400:100))){
       const previous=goal.action;goal.update(dt,player,this.world.conditions,trees,this.world.clock>goal.encounter.expiresAt,this.world.spots.filter(p=>p.availableAt<=this.world.clock&&!p.retired));
       if(previous!==goal.action){
         const p=goal.encounter.points[0],volume=.16*Math.max(0,1-Math.hypot(p.x-player.x,p.y-player.y)/250);
@@ -77,7 +77,7 @@ export class Ambience {
     }
     for(const a of this.animals){
       const s=a.sprite,goal=this.groups.get(a.group)!,profile=ANIMAL_BEHAVIOR[a.species];
-      const air=profile.habitat==='air',swim=goal.action==='swim',near=active(a.point);
+      const air=profile.habitat==='air',swim=goal.action==='swim',near=active(a.point,air?400:100);
       s.setVisible(near);if(a.obstacle)(a.obstacle.body as Phaser.Physics.Arcade.StaticBody).enable=near&&s.alpha>.15;if(!near){s.anims.pause();continue;}s.anims.resume();a.timer-=dt;
       if(view.contains(s.x,s.y)&&s.alpha>.7&&Math.hypot(s.x-player.x,s.y-player.y)<100)this.scene.events.emit('wildlife-observed',a.species,s.x,s.y);
       const index=a.encounter.points.indexOf(a.point);

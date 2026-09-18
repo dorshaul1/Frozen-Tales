@@ -1,0 +1,14 @@
+import Phaser from 'phaser';
+import {RiverScene} from '../src/game/scenes/RiverScene';
+const scene=new RiverScene(null,true);new Phaser.Game({type:Phaser.AUTO,width:800,height:600,parent:'test',pixelArt:true,physics:{default:'arcade'},scene:[scene]});
+while(!scene.fishing)await new Promise(r=>setTimeout(r,100));scene.scene.pause();
+const out=document.querySelector('#result')!;out.textContent='';
+const check=(v:boolean,label:string)=>{out.textContent+=(v?'PASS ':'FAIL ')+label+'\n';if(!v)throw Error(label);};
+const camera=scene.cameras.main;camera.stopFollow();camera.centerOn(2500,1440);camera.preRender();
+const view=camera.worldView,p={x:view.left-175,y:1440},origin={...p},world=scene.dynamicWorld,ambience=Reflect.get(scene,'ambience');
+world.encounters.splice(0,world.encounters.length,{id:90001,species:'bird',points:[p],expiresAt:999999,heading:0});
+for(let i=0;i<200;i++)ambience.update(i*33,33,{x:2500,y:1440});
+check(Math.hypot(p.x-origin.x,p.y-origin.y)>5,'Offscreen birds animate and travel instead of freezing');
+const start=performance.now();for(let i=0;i<600;i++)ambience.update(i*16,16,{x:2500,y:1440});
+check(performance.now()-start<3000,'Ambient update stays within a lightweight budget');
+check(Number.isFinite(p.x)&&Number.isFinite(p.y),'Flight position stays valid');

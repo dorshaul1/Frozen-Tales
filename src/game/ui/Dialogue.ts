@@ -1,10 +1,11 @@
+import {gameplayCode} from '../input/physicalKeyboard';
 import Phaser from 'phaser';import {pixelText} from './PixelText';import {positionPanel} from './panelPosition';import {ATLAS,ASSETS,type AssetId} from '../assets/catalog';import type {DialoguePage} from '../home/remoteNpcData';
 export class Dialogue {
  isOpen=false;private page=0;private panel:Phaser.GameObjects.Container;private pages:readonly DialoguePage[]=[];private speaker='';private asset:AssetId='remote-cartographer';
  constructor(private scene:Phaser.Scene,private lock:(value:boolean)=>void){this.panel=scene.add.container().setDepth(60).setVisible(false);window.addEventListener('keydown',this.key,true);scene.events.once('shutdown',()=>{window.removeEventListener('keydown',this.key,true);if(this.isOpen)this.close();});}
  open(name:string,asset:AssetId,pages:readonly DialoguePage[]){this.speaker=name;this.asset=asset;this.pages=pages;this.page=0;this.isOpen=true;this.scene.input.keyboard!.resetKeys();this.scene.input.keyboard!.enabled=false;this.lock(true);this.draw();this.scene.events.emit('dialogue-opened',name);}
  close(){this.isOpen=false;this.panel.setVisible(false);this.scene.input.keyboard!.enabled=true;this.scene.input.keyboard!.resetKeys();this.lock(false);}
- private key=(e:KeyboardEvent)=>{if(!this.isOpen)return;e.preventDefault();e.stopImmediatePropagation();if(e.repeat)return;if(e.code==='Escape')this.close();else if(e.code==='ArrowLeft')this.go(-1);else if(['Enter','Space','KeyE','ArrowRight'].includes(e.code))this.go(1);else if(e.code==='Digit1'&&this.pages[this.page].choices?.[0]){this.choose();}};
+ private key=(e:KeyboardEvent)=>{if(!gameplayCode(e))return;if(!this.isOpen)return;e.preventDefault();e.stopImmediatePropagation();if(e.repeat)return;if(gameplayCode(e)==='Escape')this.close();else if(gameplayCode(e)==='ArrowLeft')this.go(-1);else if(['Enter','Space','KeyE','ArrowRight'].includes(gameplayCode(e)))this.go(1);else if(gameplayCode(e)==='Digit1'&&this.pages[this.page].choices?.[0]){this.choose();}};
  private choose(){const c=this.pages[this.page].choices?.[0];if(!c)return;try{c.action?.();this.page=c.page;this.draw();}catch{this.pages=[{text:'Progress could not be saved. Please try again.'}];this.page=0;this.draw();}}
  private go(step:number){if(step>0&&this.pages[this.page].choices?.[0]?.action){this.choose();return;}if(this.page+step>=this.pages.length){this.close();return;}this.page=Math.max(0,this.page+step);this.draw();}
  update(){if(this.isOpen)positionPanel(this.scene,this.panel,330,146);}

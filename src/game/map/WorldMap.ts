@@ -1,4 +1,4 @@
-import {requireFeature} from '../progression/features';
+import {hasFeature} from '../progression/features';
 import {areaAt,AREA_SPAWNS,type AreaId} from '../world/spawnRules';
 import {positionPanel,panelPoint} from '../ui/panelPosition';
 import {INTERACTION_SPOTS} from '../world/interactionSpots';
@@ -35,10 +35,12 @@ export class WorldMap {
  private group:PlaceGroup='areas';
  private selected?:string;
  private page=0;
- private button=document.getElementById('map-button');
+ private button=document.createElement('button');
+ private mini=document.createElement('canvas');private miniAt=-Infinity;
  readonly temporaryMarkers:(MapMarker&{expiresAt:number})[]=[];
  constructor(private scene:Phaser.Scene,private store:SaveStore,private player:()=>{x:number;y:number},private available:()=>boolean,
    private lock:(locked:boolean)=>void,private progress:()=>MapProgress=()=>({icebreaker:store.load().loadout?.includes('icebreaker')??false,openedPassages:store.load().openedPassages??[]})){
+  document.getElementById('map-button')?.remove();this.button.id='minimap-button';this.button.title='River Chart (M)';this.button.setAttribute('aria-label','Open River Chart');this.mini.width=80;this.mini.height=60;this.button.append(this.mini);Object.assign(this.button.style,{position:'fixed',right:'16px',bottom:'16px',padding:'3px',border:'2px solid #b08d63',background:'#173642',zIndex:'10',display:'none',cursor:'pointer'});Object.assign(this.mini.style,{width:'160px',height:'120px',imageRendering:'pixelated'});document.body.append(this.button);scene.events.on('postupdate',this.updateMini,this);
   Object.assign(this.rowButtons.style,{position:'fixed',inset:'0',pointerEvents:'none',zIndex:'11',display:'none'});document.body.append(this.rowButtons);
   this.discovery=new Discovery(store.loadMap());
   if(!(store.loadMap() as {regional?:unknown}|undefined)?.regional){this.discovery.regional.inferLegacy(store.load().records,store.load().goals?.wildlife);store.writeMap(this.discovery.snapshot());}
@@ -65,17 +67,24 @@ export class WorldMap {
   this.button?.addEventListener('click',this.toggle);
   scene.game.events.on(Phaser.Core.Events.BLUR,this.close,this);
   scene.events.once('shutdown',()=>{scene.input.off('wheel',this.wheel,this);scene.input.off('pointerdown',this.pickMarker,this);
-   this.button?.removeEventListener('click',this.toggle);scene.game.events.off(Phaser.Core.Events.BLUR,this.close,this);this.panel.destroy(true);this.notice.destroy();this.rowButtons.remove();});
+   this.button?.removeEventListener('click',this.toggle);scene.game.events.off(Phaser.Core.Events.BLUR,this.close,this);this.panel.destroy(true);this.notice.destroy();this.rowButtons.remove();this.button.remove();scene.events.off('postupdate',this.updateMini,this);});
+ }
+ private updateMini(){
+  const unlocked=hasFeature(this.scene,'riverChart');if(!unlocked&&this.isOpen)this.close();
+  const visible=unlocked&&!this.isOpen&&this.available()&&!document.body.classList.contains('panel-open');this.button.style.display=visible?'block':'none';if(!visible||this.scene.time.now-this.miniAt<250)return;this.miniAt=this.scene.time.now;
+  const p=this.player(),ctx=this.mini.getContext('2d')!,cx=Math.round(p.x/8)*8,cy=Math.round(p.y/8)*8;ctx.imageSmoothingEnabled=false;
+  for(let y=0;y<60;y++)for(let x=0;x<80;x++){const wx=cx+(x-40)*12,wy=cy+(y-30)*12;ctx.fillStyle=!this.discovery.known(wx,wy)?'#2c414e':waterAt(wx,wy)?'#527f90':'#d0c7a8';ctx.fillRect(x,y,1,1);}
+  ctx.fillStyle='#173642';ctx.fillRect(38,28,5,5);ctx.fillStyle='#f5d990';ctx.fillRect(39,29,3,3);
  }
  private text(x:number,y:number,t:string,color='#c0dce0'){
   return pixelText(this.scene,x,y,t,{fontFamily:'monospace',fontSize:'8px',color});
  }
  private toggle=()=>{if(this.isOpen)this.close();else this.open();};
  open(){
-  if(!requireFeature(this.scene,'riverChart','Mara at Lookout Point can help you chart the river.'))return;
+  if(!hasFeature(this.scene,'riverChart'))return;
   if(this.isOpen||!this.available())return;
   const p=this.player();if(this.discovery.visit(p.x,p.y).changed)this.store.writeMap(this.discovery.snapshot());
-  this.isOpen=true;this.lock(true);this.selected=areaAt(p.y,p.x);this.group='areas';this.page=0;
+  this.isOpen=true;this.button.style.display='none';this.lock(true);this.selected=areaAt(p.y,p.x);this.group='areas';this.page=0;
   this.panel.setVisible(true);this.rowButtons.style.display='block';this.button?.blur();this.button?.setAttribute('aria-expanded','true');
   document.body.classList.add('panel-open');this.scene.events.emit('river-cue','ui-open',.4);
   this.center(p.y,p.x);this.position();

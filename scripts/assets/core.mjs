@@ -142,7 +142,7 @@ export function build() {
     frames[item.key]={frame:{x:item.x,y:item.y,w:item.image.width,h:item.image.height},rotated:false,trimmed:false,spriteSourceSize:{x:0,y:0,w:item.image.width,h:item.image.height},sourceSize:{w:item.image.width,h:item.image.height}};
   }
   fs.mkdirSync(at('assets/atlases'),{recursive:true});fs.writeFileSync(at('assets/atlases/game.png'),PNG.sync.write(atlas));
-  write('assets/atlases/game.json',{frames,meta:{app:'Arctic Drift asset pipeline',image:'game.png',format:'RGBA8888',size:{w:atlas.width,h:atlas.height},scale:'1'}});
+  write('assets/atlases/game.json',{frames,meta:{app:'Frozen Tales asset pipeline',image:'game.png',format:'RGBA8888',size:{w:atlas.width,h:atlas.height},scale:'1'}});
   write('src/game/assets/catalog.ts',catalogText(manifest));
   return {assets:manifest.assets.length,frames:packed.length};
 }

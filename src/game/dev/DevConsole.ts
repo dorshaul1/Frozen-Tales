@@ -1,3 +1,4 @@
+import {gameplayCode} from '../input/physicalKeyboard';
 import {hudPixelText} from '../ui/PixelText';
 import {createRegistry,slug,type Context} from './commands';
 import {History} from './registry';
@@ -40,8 +41,9 @@ export class DevConsole {
  private suggest(){const matches=this.registry.suggestions(this.input.value);this.matches.textContent=matches.slice(0,6).join('  ·  ')+(matches.length>6?`  (+${matches.length-6})`:'');}
  private keyup=(e:KeyboardEvent)=>{if(this.isOpen){e.stopImmediatePropagation();e.preventDefault();}};
  private key=(e:KeyboardEvent)=>{
-  if(!this.isOpen){if((e.key==='/'||e.code==='Slash'&&!e.shiftKey)&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.repeat&&!(e.target instanceof HTMLInputElement||e.target instanceof HTMLTextAreaElement)&&this.available()){e.preventDefault();e.stopImmediatePropagation();this.open();}return;}
+  if(!this.isOpen){if(gameplayCode(e)==='Slash'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.repeat&&!(e.target instanceof HTMLInputElement||e.target instanceof HTMLTextAreaElement)&&this.available()){e.preventDefault();e.stopImmediatePropagation();this.open();}return;}
   e.stopImmediatePropagation();
+  if(e.isComposing)return;
   if(e.key==='Escape'){e.preventDefault();this.close();return;}
   if(e.key==='Enter'){
    e.preventDefault();if(e.repeat)return;const line=this.input.value.trim();if(!line||line==='/')return;

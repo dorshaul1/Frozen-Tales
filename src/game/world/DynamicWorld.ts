@@ -19,7 +19,7 @@ import { FISH, type FishId, type FishTable } from '../fishing/data';
 import { HOME } from '../tuning';
 import { waterSpans, banks, createFloes, WORLD_HEIGHT, WORLD_WIDTH } from './river';
 import { currentAt } from './areas';
-import { ECOLOGY, areaFishPool, AREA_SPAWNS, ANIMAL_RULES, DYNAMIC, areaAt, type AreaId, type AnimalId } from './spawnRules';
+import { WILDLIFE_DENSITY, ECOLOGY, areaFishPool, AREA_SPAWNS, ANIMAL_RULES, DYNAMIC, areaAt, type AreaId, type AnimalId } from './spawnRules';
 export type Point = { x: number; y: number };
 export type View = { left: number; right: number; top: number; bottom: number };
 export type Activity = Point & { area: AreaId; weights: FishTable; availableAt: number; expiresAt: number; kind: 'normal' | 'busy' | 'trophy'; retired?: boolean; required?: FishId; visitor?: FishId; rareChecked?: string; sign?: WaterSign; school?: School };
@@ -72,6 +72,7 @@ export class DynamicWorld {
   private nextTick = 0;
   private schoolElapsed = 0;
   private lastPlayerY?: number;
+  private lastPlayer?:Point;private heading={x:0,y:1};private quietSeconds=0;
   private travelDirection = 1;
   private nextId = 0;
   private rareAt = 0;
@@ -212,38 +213,46 @@ export class DynamicWorld {
     this.encounters.push({id:this.nextId++,species,points,expiresAt:this.clock+rule.lifetime,heading:0});
   }
   private spawnAnimal(species: AnimalId, player: Point, view: View) {
-    const rule=ANIMAL_RULES[species];
-    const active=this.encounters.filter(e=>e.species===species).reduce((n,e)=>n+e.points.length,0);
+    const rule=ANIMAL_RULES[species],region=areaAt(player.y,player.x),density=WILDLIFE_DENSITY[region],rare=rule.rarity==='rare';
+    const cap=rare?rule.maxActive:Math.ceil(rule.maxActive*density.scale),rate=rare?1:density.scale*(1+Math.min(1,Math.max(0,this.quietSeconds-25)/45));
+    const regional=this.encounters.filter(e=>areaAt(e.points[0].y,e.points[0].x)===region).reduce((n,e)=>n+e.points.length,0);
+    const nearbyGroups=this.encounters.filter(e=>e.points.some(p=>distance(p,player)<700));
+    if(nearbyGroups.length>=7)return;
+    const local=this.encounters.reduce((n,e)=>n+e.points.filter(p=>distance(p,player)<650).length,0);if(regional>=density.budget||local>=24)return;
+    const active=this.encounters.filter(e=>e.species===species&&(rare||areaAt(e.points[0].y,e.points[0].x)===region)).reduce((n,e)=>n+e.points.length,0);
     const total=this.encounters.reduce((n,e)=>n+e.points.length,0);
-    if(this.clock<(this.cooldown[species]??0)||active>=rule.maxActive||total>=DYNAMIC.wildlifeLimit||this.random()>=Math.min(1,rule.probability*eventWildlife(player.x,player.y)*animalActivity(species,this.conditions)*(ECOLOGY[areaAt(player.y,player.x)][species]??1)))return;
+    if(this.clock<(this.cooldown[species]??0)||active>=cap||total>=DYNAMIC.wildlifeLimit||this.random()>=Math.min(1,rule.probability*rate*eventWildlife(player.x,player.y)*animalActivity(species,this.conditions)*(ECOLOGY[areaAt(player.y,player.x)][species]??1)))return;
     if(rule.rarity==='rare'&&this.clock<this.rareAt)return;
-    let count=Math.min(rule.maxActive-active,DYNAMIC.wildlifeLimit-total,Math.floor(this.range(rule.group[0],rule.group[1]+1)));
+    let count=Math.min(cap-active,density.budget-regional,24-local,DYNAMIC.wildlifeLimit-total,Math.floor(this.range(rule.group[0],rule.group[1]+1)));
     if(count<rule.group[0])return;
     // A seal pair is rare and shares the same global rare-event budget.
     if(species==='seal'&&count>1){if(this.clock<this.rareAt||this.random()>.12)count=1;}
     for(let attempt=0;attempt<50;attempt++) {
       const forward = this.random() < .75 ? this.travelDirection : -this.travelDirection;
-      const distanceAhead = (view.bottom - view.top) / 2 + this.range(100, 360)+REGION_ATMOSPHERE[areaAt(player.y,player.x)].wildlifeDistance;
-      const y=Math.round(player.y + forward * distanceAhead);
+      const distanceAhead = (view.bottom - view.top) / 2 + this.range(65, 180)+REGION_ATMOSPHERE[areaAt(player.y,player.x)].wildlifeDistance;
+      const targetX=player.x+this.heading.x*distanceAhead;
+      const y=Math.round(!rare&&attempt%2===1?this.range(view.top-160,view.bottom+160):player.y + (rare?forward:this.heading.y)*distanceAhead);
       const area=areaAt(y,player.x);if(!rule.areas.includes(area)||y<180||y>WORLD_HEIGHT-180)continue;
-      const[l,r]=waterSpans(y).slice().sort((a,b)=>Math.abs((a[0]+a[1])/2-player.x)-Math.abs((b[0]+b[1])/2-player.x))[0]??banks(y),side=this.random()<.5?-1:1;
+      const[l,r]=waterSpans(y).slice().sort((a,b)=>Math.min(Math.abs(a[0]-targetX),Math.abs(a[1]-targetX))-Math.min(Math.abs(b[0]-targetX),Math.abs(b[1]-targetX)))[0]??banks(y),side=this.random()<.5?-1:1;
       let origin:Point={x:side<0?l-this.range(rule.radius+20,rule.radius+55):r+this.range(rule.radius+20,rule.radius+55),y};
       if(rule.terrain==='floe'){
-        const available=floes.filter(f=>rule.areas.includes(areaAt(f.y,f.x))&&f.width>=56&&Math.abs(f.y-player.y)<1000);
+        const available=floes.filter(f=>rule.areas.includes(areaAt(f.y,f.x))&&f.width>=56&&Math.hypot(f.x+f.width/2-player.x,f.y+f.height/2-player.y)<900);
         if(!available.length)return; const f=available[Math.floor(this.random()*available.length)];origin={x:f.x+f.width/2,y:f.y+f.height/2};
       }
       if(rule.terrain==='air') {
-        origin = { x: view.left - 110 - count * 36, y: player.y + this.range(-100, 100) };
+        origin = { x: view.left - 100 - count * 12, y: player.y + this.range(-100, 100) };
         const activity=this.spots.filter(s=>s.availableAt<=this.clock&&Math.abs(s.y-player.y)<650);
-        if(activity.length&&this.random()<.08)origin={x:view.left-110-count*36,y:activity[Math.floor(this.random()*activity.length)].y};
+        if(activity.length&&this.random()<.08)origin={x:view.left-100-count*12,y:activity[Math.floor(this.random()*activity.length)].y};
       }
-      const points=Array.from({length:count},(_,i)=>({x:Math.round(origin.x+(i%2)*WILDLIFE_SIZE[species].spacing*(rule.terrain==='snow'?side:1)+this.range(-3,3)),y:Math.round(origin.y+Math.floor(i/2)*WILDLIFE_SIZE[species].spacing+this.range(-3,3))}));
+      const spread=WILDLIFE_SIZE[species].spacing*this.range(.85,1.4);
+      const points=Array.from({length:count},(_,i)=>({x:Math.round(origin.x+(i%2)*spread*(rule.terrain==='snow'?side:1)+this.range(-3,3)),y:Math.round(origin.y+Math.floor(i/2)*spread+this.range(-3,3))}));
       if(points.some(p=>!outside(p,view,90)||distance(p,player)<rule.playerDistance||distance(p,home)<rule.homeDistance||!this.fresh(p)
         ||p.x<30||p.x>WORLD_WIDTH-30||p.y<150||p.y>WORLD_HEIGHT-150||!rule.areas.includes(areaAt(p.y,p.x))
         ||caveStrength(p.x,p.y)>.1||(rule.terrain==='snow'&&!validSnow(p,rule.radius))||(rule.terrain==='floe'&&!validFloe(p,rule.radius))))continue;
+      if(areaAt(origin.y,origin.x)!==region)continue;
       if(this.encounters.some(e=>e.points.some(p=>distance(p,origin)<130)))continue;
       this.encounters.push({id:this.nextId++,species,points,expiresAt:this.clock+rule.lifetime*this.range(.8,1.2),heading:this.range(0,Math.PI*2)});
-      this.cooldown[species]=this.clock+rule.cooldown;
+      this.cooldown[species]=this.clock+rule.cooldown/(rare?1:rate);
       if(rule.rarity==='rare'||(species==='seal'&&count>1))this.rareAt=this.clock+DYNAMIC.rareCooldown;
       return;
     }
@@ -251,6 +260,9 @@ export class DynamicWorld {
   update(delta: number, player: Point, view: View, protectedSpot?: Point, playerSpeed = 0) {
     if (this.lastPlayerY !== undefined && Math.abs(player.y - this.lastPlayerY) > 1) this.travelDirection = Math.sign(player.y - this.lastPlayerY);
     this.lastPlayerY = player.y;
+    if(this.lastPlayer){const dx=player.x-this.lastPlayer.x,dy=player.y-this.lastPlayer.y,length=Math.hypot(dx,dy);if(length>.2&&length<100)this.heading={x:dx/length,y:dy/length};}
+    this.lastPlayer={...player};
+    this.quietSeconds=this.encounters.some(e=>e.points.some(p=>!outside(p,view)))?0:this.quietSeconds+Math.min(delta,50)/1000;
     this.clock+=Math.min(delta,50)/1000;
     this.schoolElapsed+=Math.min(delta,50)/1000;
     if(this.schoolElapsed>=.1){const dt=this.schoolElapsed;this.schoolElapsed=0;
@@ -264,10 +276,13 @@ export class DynamicWorld {
     }
     for(let i=this.encounters.length-1;i>=0;i--){const e=this.encounters[i];
       if (animalActivity(e.species, this.conditions) === 0) e.expiresAt = Math.min(e.expiresAt, this.clock + 3);
-      if(this.clock>=e.expiresAt&&(e.departed||e.points.every(p=>outside(p,view,100))||this.clock>e.expiresAt+46)){e.points.forEach(p=>this.remember(p));this.encounters.splice(i,1);this.cooldown[e.species]=Math.max(this.cooldown[e.species]??0,this.clock+ANIMAL_RULES[e.species].cooldown);}
+      if(this.clock>=e.expiresAt&&(e.departed||e.points.every(p=>outside(p,view,100))||this.clock>e.expiresAt+46)){e.points.forEach(p=>this.remember(p));this.encounters.splice(i,1);this.cooldown[e.species]=Math.max(this.cooldown[e.species]??0,this.clock+(ANIMAL_RULES[e.species].rarity==='rare'?ANIMAL_RULES[e.species].cooldown:5));}
     }
     this.populate(player,view); this.assignVisitors(view);
-    for(const id of Object.keys(ANIMAL_RULES) as AnimalId[])this.spawnAnimal(id,player,view);
+    const species=Object.keys(ANIMAL_RULES) as AnimalId[];
+    // Rotate the first candidate so dense penguin colonies do not always fill the budget first.
+    const offset=Math.floor(this.random()*species.length);
+    for(let i=0;i<species.length;i++)this.spawnAnimal(species[(i+offset)%species.length],player,view);
     this.onChange();
   }
 }

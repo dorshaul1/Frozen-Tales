@@ -1,3 +1,4 @@
+import {slotNumber,editableTarget} from '../input/physicalKeyboard';
 import {requireFeature} from '../progression/features';
 import {interactionReading} from '../world/interactionSpots';
 import {riverReading} from '../world/riverConditions';
@@ -53,16 +54,13 @@ export class ToolView {
     // consume an unmodified keydown; keyup still supplies the same physical key.
     const pressedNumbers=new Set<number>();
     const numberKey=(event:KeyboardEvent)=>{
-      const match=/^(?:Digit|Numpad)([1-5])$/.exec(event.code);
-      const legacy=event.keyCode>=49&&event.keyCode<=53?event.keyCode-48:
-        event.keyCode>=97&&event.keyCode<=101?event.keyCode-96:0;
-      const number=match?Number(match[1]):/^[1-5]$/.test(event.key)?Number(event.key):legacy;
+      const number=slotNumber(event);
       if(!number)return;
       const handled=pressedNumbers.has(number);
       if(event.type==='keyup')pressedNumbers.delete(number);
       if(event.ctrlKey||event.metaKey||event.altKey||!this.canUse())return;
       const target=event.target;
-      if(target instanceof HTMLElement&&(target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)))return;
+      if(editableTarget(target))return;
       event.preventDefault();
       if(handled)return;
       if(event.type==='keydown')pressedNumbers.add(number);
